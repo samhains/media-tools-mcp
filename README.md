@@ -139,9 +139,6 @@ For more information, visit the [Glama.ai MCP servers documentation](https://gla
 - **🔌 Universal MCP Compatibility** - Works with all MCP clients including Cursor, Claude Desktop, Cline, and Zed
 - **🔒 Secure Local Processing** - All requests are processed locally for enhanced privacy and security
 - **🔍 Comprehensive History Management** - Track, view, and retrieve your complete generation history
-- **📊 Batch Processing** - Generate multiple images from different prompts in a single request
-- **🔄 Variant Exploration** - Create and compare multiple interpretations of the same concept
-- **✏️ Prompt Engineering** - Fine-tune image variations with specialized prompt modifications
 
 ## 📚 Documentation
 
@@ -166,55 +163,6 @@ Generates an image based on a text prompt using the Flux Schnell model.
 }
 ```
 
-#### `generate_multiple_images`
-
-Generates multiple images based on an array of prompts using the Flux Schnell model.
-
-```typescript
-{
-  prompts: string[];             // Required: Array of text descriptions for images to generate (1-10 prompts)
-  seed?: number;                 // Optional: Random seed for reproducible generation
-  go_fast?: boolean;             // Optional: Run faster predictions with optimized model (default: true)
-  megapixels?: "1" | "0.25";     // Optional: Image resolution (default: "1")
-  aspect_ratio?: string;         // Optional: Aspect ratio (e.g., "16:9", "4:3") (default: "1:1")
-  output_format?: string;        // Optional: Output format ("webp", "jpg", "png") (default: "webp")
-  output_quality?: number;       // Optional: Image quality (0-100) (default: 80)
-  num_inference_steps?: number;  // Optional: Number of denoising steps (1-4) (default: 4)
-  disable_safety_checker?: boolean; // Optional: Disable safety filter (default: false)
-}
-```
-
-#### `generate_image_variants`
-
-Generates multiple variants of the same image from a single prompt.
-
-```typescript
-{
-  prompt: string;                // Required: Text description for the image to generate variants of
-  num_variants: number;          // Required: Number of image variants to generate (2-10, default: 4)
-  prompt_variations?: string[];  // Optional: List of prompt modifiers to apply to variants (e.g., ["in watercolor style", "in oil painting style"])
-  variation_mode?: "append" | "replace"; // Optional: How to apply variations - 'append' adds to base prompt, 'replace' uses variations directly (default: "append")
-  seed?: number;                 // Optional: Base random seed. Each variant will use seed+variant_index
-  go_fast?: boolean;             // Optional: Run faster predictions with optimized model (default: true)
-  megapixels?: "1" | "0.25";     // Optional: Image resolution (default: "1")
-  aspect_ratio?: string;         // Optional: Aspect ratio (e.g., "16:9", "4:3") (default: "1:1")
-  output_format?: string;        // Optional: Output format ("webp", "jpg", "png") (default: "webp")
-  output_quality?: number;       // Optional: Image quality (0-100) (default: 80)
-  num_inference_steps?: number;  // Optional: Number of denoising steps (1-4) (default: 4)
-  disable_safety_checker?: boolean; // Optional: Disable safety filter (default: false)
-}
-```
-
-
-#### `prediction_list`
-
-Retrieves a list of your recent predictions from Replicate.
-
-```typescript
-{
-  limit?: number;  // Optional: Maximum number of predictions to return (1-100) (default: 50)
-}
-```
 
 #### `get_prediction`
 
@@ -350,51 +298,16 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ![Demo](https://github.com/user-attachments/assets/ad6db606-ae3a-48db-a1cc-e1f88847769e)
 
-| Multiple Prompts | Prompt Variants |
-|-----------------|-----------------|
-| ![Multiple prompts example: "A serene mountain lake at sunset", "A bustling city street at night", "A peaceful garden in spring"](https://github.com/user-attachments/assets/e5ac56d2-bfbb-4f33-938c-a3d7bffeee60) | ![Variants example: Base prompt "A majestic castle" with modifiers "in watercolor style", "as an oil painting", "with gothic architecture"](https://github.com/user-attachments/assets/8ebe5992-4803-4bf3-a82a-251135b0698a) |
-
-Here are some examples of how to use the tools:
-
-### Batch Image Generation with `generate_multiple_images`
-
-Create multiple distinct images at once with different prompts:
+Here's an example of how to use the image generation tool:
 
 ```json
 {
-  "prompts": [
-    "A red sports car on a mountain road", 
-    "A blue sports car on a beach", 
-    "A vintage sports car in a city street"
-  ]
+  "prompt": "A beautiful mountain landscape with a lake, in the style of a watercolor painting",
+  "aspect_ratio": "16:9",
+  "output_format": "png"
 }
 ```
 
-### Image Variants with `generate_image_variants`
-
-Create different interpretations of the same concept using seeds:
-
-```json
-{
-  "prompt": "A futuristic city skyline at night",
-  "num_variants": 4,
-  "seed": 42
-}
-```
-
-Or explore style variations with prompt modifiers:
-
-```json
-{
-  "prompt": "A character portrait",
-  "prompt_variations": [
-    "in anime style", 
-    "in watercolor style", 
-    "in oil painting style", 
-    "as a 3D render"
-  ]
-}
-```
 
 ---
 
