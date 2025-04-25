@@ -5,4 +5,5 @@ export const CONFIG = {
   imageModelId: "black-forest-labs/flux-schnell" as `${string}/${string}`,
   pollingAttempts: 25,
   pollingInterval: 2000, // ms
+  elevenlabsApiUrl: "https://api.elevenlabs.io/v1",
 };

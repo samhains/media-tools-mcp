@@ -4,8 +4,9 @@ import { server } from "../server/index.js";
 import { imageGenerationSchema } from "../types/index.js";
 import { registerGetPredictionTool } from "./getPrediction.js";
 import { registerGenerateImageTool } from "./generateImage.js";
-import { createPredictionSchema } from "../types/index.js";
+import { createPredictionSchema, createSoundSchema } from "../types/index.js";
 import { registerCreatePredictionTool } from "./createPrediction.js";
+import { registerCreateSoundTool } from "./createSound.js";
 
 export const registerAllTools = () => {
   server.tool(
@@ -25,5 +26,11 @@ export const registerAllTools = () => {
     "Generate an prediction from a text prompt using Flux Schnell model",
     createPredictionSchema,
     registerCreatePredictionTool
+  );
+  server.tool(
+    "create_sound",
+    "Generate a sound effect from a text description using ElevenLabs API",
+    createSoundSchema,
+    registerCreateSoundTool
   );
 };

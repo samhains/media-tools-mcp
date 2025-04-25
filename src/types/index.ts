@@ -84,12 +84,25 @@ export const imageGenerationSchema = {
 const imageGenerationObjectSchema = z.object(imageGenerationSchema);
 export type ImageGenerationParams = z.infer<typeof imageGenerationObjectSchema>;
 
-
-
 export const getPredictionSchema = {
   predictionId: z.string().min(1).describe("ID of the prediction to retrieve"),
 };
 const getPredictionObjectSchema = z.object(getPredictionSchema);
 export type GetPredictionParams = z.infer<typeof getPredictionObjectSchema>;
 
+export const createSoundSchema = {
+  text: z.string().min(1).describe("Text description of the sound effect"),
+  duration_seconds: z
+    .number()
+    .min(0.5)
+    .max(22)
+    .default(2.0)
+    .describe("Duration of the sound effect in seconds"),
+  output_directory: z
+    .string()
+    .optional()
+    .describe("Directory where sound file should be saved. Defaults to $HOME/Desktop if not provided"),
+};
+const createSoundObjectSchema = z.object(createSoundSchema);
+export type CreateSoundParams = z.infer<typeof createSoundObjectSchema>;
 

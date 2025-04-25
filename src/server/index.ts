@@ -13,8 +13,9 @@ export const server = new McpServer(
       tools: {},
     },
     instructions: `
-    MCP server for the Replicate models.
-    It is used to generate images and SVGs from text prompts.
+    MCP server for media generation.
+    It is used to generate images from text prompts using Replicate models
+    and sound effects from text descriptions using ElevenLabs API.
     `,
   }
 );
