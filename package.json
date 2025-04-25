@@ -1,9 +1,9 @@
 {
-  "name": "replicate-flux-mcp",
+  "name": "media-tools-mcp",
   "version": "0.1.2",
   "type": "module",
   "bin": {
-    "replicate-flux-mcp": "build/index.js"
+    "media-tools-mcp": "build/index.js"
   },
   "scripts": {
     "build": "tsc && shx chmod +x build/*.js",
@@ -12,20 +12,20 @@
     "dev": "npm run watch",
     "inspector": "npx @modelcontextprotocol/inspector build/index.js -e REPLICATE_API_TOKEN=YOUR_REPLICATE_API_TOKEN"
   },
-  "homepage": "https://github.com/awkoy/replicate-flux-mcp",
+  "homepage": "https://github.com/awkoy/media-tools-mcp",
   "keywords": [
     "replicate",
     "flux",
     "mcp",
     "flux-schnell",
-    "flux-schnell-mcp",
+    "media-tools",
     "modelcontextprotocol",
     "image-generation",
     "ai"
   ],
   "author": "Yaroslav Boiko <y.boikodeveloper@gmail.com>",
   "license": "MIT",
-  "description": "MCP for Replicate Flux Model",
+  "description": "MCP for Media Generation Tools",
   "files": [
     "build"
   ],
@@ -44,6 +44,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/awkoy/replicate-flux-mcp.git"
+    "url": "git+https://github.com/awkoy/media-tools-mcp.git"
   }
 }

@@ -84,35 +84,6 @@ export const imageGenerationSchema = {
 const imageGenerationObjectSchema = z.object(imageGenerationSchema);
 export type ImageGenerationParams = z.infer<typeof imageGenerationObjectSchema>;
 
-export const svgGenerationSchema = {
-  prompt: z.string().min(1).describe("Prompt for generated SVG"),
-  size: z
-    .enum([
-      "1024x1024",
-      "1365x1024",
-      "1024x1365",
-      "1536x1024",
-      "1024x1536",
-      "1820x1024",
-      "1024x1820",
-      "1024x2048",
-      "2048x1024",
-      "1434x1024",
-      "1024x1434",
-      "1024x1280",
-      "1280x1024",
-      "1024x1707",
-      "1707x1024",
-    ])
-    .default("1024x1024")
-    .describe("Size of the generated SVG"),
-  style: z
-    .enum(["any", "engraving", "line_art", "line_circuit", "linocut"])
-    .default("any")
-    .describe("Style of the generated image."),
-};
-const svgGenerationObjectSchema = z.object(svgGenerationSchema);
-export type SvgGenerationParams = z.infer<typeof svgGenerationObjectSchema>;
 
 export const predictionListSchema = {
   limit: z

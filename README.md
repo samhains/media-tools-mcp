@@ -1,18 +1,18 @@
-# Replicate Flux MCP
+# Media Tools MCP
 
 ![MCP Compatible](https://img.shields.io/badge/MCP-Compatible-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
 ![TypeScript](https://img.shields.io/badge/TypeScript-4.9+-blue)
 ![Model Context Protocol](https://img.shields.io/badge/MCP-Enabled-purple)
-[![smithery badge](https://smithery.ai/badge/@awkoy/replicate-flux-mcp)](https://smithery.ai/server/@awkoy/replicate-flux-mcp)
-![NPM Downloads](https://img.shields.io/npm/dw/replicate-flux-mcp)
-![Stars](https://img.shields.io/github/stars/awkoy/replicate-flux-mcp)
+[![smithery badge](https://smithery.ai/badge/@awkoy/media-tools-mcp)](https://smithery.ai/server/@awkoy/media-tools-mcp)
+![NPM Downloads](https://img.shields.io/npm/dw/media-tools-mcp)
+![Stars](https://img.shields.io/github/stars/awkoy/media-tools-mcp)
 
 <a href="https://glama.ai/mcp/servers/ss8n1knen8">
   <img width="380" height="200" src="https://glama.ai/mcp/servers/ss8n1knen8/badge" />
 </a>
 
-**Replicate Flux MCP** is an advanced Model Context Protocol (MCP) server that empowers AI assistants to generate high-quality images and vector graphics. Leveraging [Black Forest Labs' Flux Schnell model](https://replicate.com/black-forest-labs/flux-schnell) for raster images and [Recraft's V3 SVG model](https://replicate.com/recraft-ai/recraft-v3-svg) for vector graphics via the Replicate API.
+**Media Tools MCP** is an advanced Model Context Protocol (MCP) server that empowers AI assistants to generate high-quality images. Leveraging [Black Forest Labs' Flux Schnell model](https://replicate.com/black-forest-labs/flux-schnell) for raster images via the Replicate API.
 
 ## 📑 Table of Contents
 
@@ -63,9 +63,9 @@
 ```json
 {
   "mcpServers": {
-    "replicate-flux-mcp": {
+    "media-tools-mcp": {
       "command": "env REPLICATE_API_TOKEN=YOUR_TOKEN npx",
-      "args": ["-y", "replicate-flux-mcp"]
+      "args": ["-y", "media-tools-mcp"]
     }
   }
 }
@@ -82,7 +82,7 @@
 4. Enter the following command in the appropriate field:
 
 ```
-env REPLICATE_API_TOKEN=YOUR_TOKEN npx -y replicate-flux-mcp
+env REPLICATE_API_TOKEN=YOUR_TOKEN npx -y media-tools-mcp
 ```
 
 5. Replace `YOUR_TOKEN` with your actual Replicate API token
@@ -95,9 +95,9 @@ env REPLICATE_API_TOKEN=YOUR_TOKEN npx -y replicate-flux-mcp
 ```json
 {
   "mcpServers": {
-    "replicate-flux-mcp": {
+    "media-tools-mcp": {
       "command": "npx",
-      "args": ["-y", "replicate-flux-mcp"],
+      "args": ["-y", "media-tools-mcp"],
       "env": {
         "REPLICATE_API_TOKEN": "YOUR TOKEN"
       }
@@ -114,7 +114,7 @@ env REPLICATE_API_TOKEN=YOUR_TOKEN npx -y replicate-flux-mcp
 This MCP server is available as a hosted service on Smithery, allowing you to use it without setting up your own server.
 
 1. Visit [Smithery](https://smithery.ai/) and create an account if you don't have one
-2. Navigate to the [Replicate Flux MCP server page](https://smithery.ai/server/@awkoy/replicate-flux-mcp)
+2. Navigate to the [Media Tools MCP server page](https://smithery.ai/server/@awkoy/media-tools-mcp)
 3. Click "Add to Workspace" to add the server to your Smithery workspace
 4. Configure your MCP client (Cursor, Claude Desktop, etc.) to use your Smithery workspace URL
 
@@ -125,7 +125,7 @@ For more information on using Smithery with your MCP clients, visit the [Smither
 This MCP server is also available as a hosted service on Glama.ai, providing another option to use it without local setup.
 
 1. Visit [Glama.ai](https://glama.ai/) and create an account if you don't have one
-2. Go to the [Replicate Flux MCP server page](https://glama.ai/mcp/servers/ss8n1knen8)
+2. Go to the [Media Tools MCP server page](https://glama.ai/mcp/servers/ss8n1knen8)
 3. Click "Install Server" to add the server to your workspace
 4. Configure your MCP client to use your Glama.ai workspace
 
@@ -134,7 +134,6 @@ For more information, visit the [Glama.ai MCP servers documentation](https://gla
 ## 🌟 Features
 
 - **🖼️ High-Quality Image Generation** - Create stunning images using Flux Schnell, a state-of-the-art AI model
-- **🎨 Vector Graphics Support** - Generate professional SVG vector graphics with Recraft V3 SVG model
 - **🤖 AI Assistant Integration** - Seamlessly enable AI assistants like Claude to generate visual content
 - **🎛️ Advanced Customization** - Fine-tune generation with controls for aspect ratio, quality, resolution, and more
 - **🔌 Universal MCP Compatibility** - Works with all MCP clients including Cursor, Claude Desktop, Cline, and Zed
@@ -206,18 +205,6 @@ Generates multiple variants of the same image from a single prompt.
 }
 ```
 
-#### `generate_svg`
-
-Generates an SVG vector image based on a text prompt using the Recraft V3 SVG model.
-
-```typescript
-{
-  prompt: string;                // Required: Text description of the SVG to generate
-  size?: string;                 // Optional: Size of the generated SVG (default: "1024x1024")
-  style?: string;                // Optional: Style of the generated image (default: "any")
-                                // Options: "any", "engraving", "line_art", "line_circuit", "linocut"
-}
-```
 
 #### `prediction_list`
 
@@ -245,9 +232,6 @@ Gets detailed information about a specific prediction.
 
 Browse your history of generated images created with the Flux Schnell model.
 
-#### `svglist`
-
-Browse your history of generated SVG images created with the Recraft V3 SVG model.
 
 #### `predictionlist`
 
@@ -258,8 +242,8 @@ Browse all your Replicate predictions history.
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/yourusername/replicate-flux-mcp.git
-cd replicate-flux-mcp
+git clone https://github.com/yourusername/media-tools-mcp.git
+cd media-tools-mcp
 ```
 
 2. Install dependencies:
@@ -288,7 +272,7 @@ npm run build
     "image-generation-mcp": {
       "command": "npx",
       "args": [
-        "/Users/{USERNAME}/{PATH_TO}/replicate-flux-mcp/build/index.js"
+        "/Users/{USERNAME}/{PATH_TO}/media-tools-mcp/build/index.js"
       ],
       "env": {
         "REPLICATE_API_TOKEN": "YOUR REPLICATE API TOKEN"
@@ -313,10 +297,9 @@ The server can be configured by modifying the `CONFIG` object in `src/config/ind
 
 ```javascript
 const CONFIG = {
-  serverName: "replicate-flux-mcp",
+  serverName: "media-tools-mcp",
   serverVersion: "0.1.2",
   imageModelId: "black-forest-labs/flux-schnell",
-  svgModelId: "recraft-ai/recraft-v3-svg",
   pollingAttempts: 25,
   pollingInterval: 2000, // ms
 };
@@ -359,7 +342,6 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 - [Model Context Protocol Documentation](https://modelcontextprotocol.io)
 - [Replicate API Documentation](https://replicate.com/docs)
 - [Flux Schnell Model](https://replicate.com/black-forest-labs/flux-schnell)
-- [Recraft V3 SVG Model](https://replicate.com/recraft-ai/recraft-v3-svg)
 - [MCP TypeScript SDK](https://github.com/modelcontextprotocol/typescript-sdk)
 - [Smithery Documentation](https://smithery.ai/docs)
 - [Glama.ai MCP Servers](https://glama.ai/mcp/servers)
