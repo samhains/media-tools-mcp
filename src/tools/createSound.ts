@@ -6,13 +6,12 @@ import { handleError } from "../utils/error.js";
 import { CallToolResult } from "@modelcontextprotocol/sdk/types.js";
 import os from "os";
 import { CONFIG } from "../config/index.js";
-import { audioBufferToBase64 } from "../utils/audio.js";
 
 export const registerCreateSoundTool = async (
   input: CreateSoundParams
 ): Promise<CallToolResult> => {
   try {
-    const { text, duration_seconds, output_directory, support_audio_mcp_response_type } = input;
+    const { text, duration_seconds, output_directory } = input;
     
     // Validate input
     if (duration_seconds < 0.5 || duration_seconds > 22) {
@@ -58,32 +57,6 @@ export const registerCreateSoundTool = async (
     
     // Save the audio file
     fs.writeFileSync(outputFilePath, response.data);
-    
-    // Convert audio buffer to base64 for embedding in response
-    const audioBase64 = await audioBufferToBase64(response.data);
-    
-    if (support_audio_mcp_response_type) {
-      return {
-        content: [
-          {
-            type: "text",
-            text: `Success. Sound effect created and saved to: ${outputFilePath}`,
-          },
-          {
-            type: "resource",
-            resource: {
-              uri: `data:audio/mp3;base64,${audioBase64}`,
-              text: "Sound Effect",
-              mimeType: "audio/mp3"
-            }
-          },
-          {
-            type: "text",
-            text: `The audio above was generated using prompt: "${text}"`,
-          },
-        ],
-      };
-    }
     
     return {
       content: [

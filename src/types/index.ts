@@ -102,12 +102,6 @@ export const createSoundSchema = {
     .string()
     .optional()
     .describe("Directory where sound file should be saved. Defaults to $HOME/Desktop if not provided"),
-  support_audio_mcp_response_type: z
-    .boolean()
-    .default(true)
-    .describe(
-      "Disable if the audio type is not supported in the response"
-    ),
 };
 const createSoundObjectSchema = z.object(createSoundSchema);
 export type CreateSoundParams = z.infer<typeof createSoundObjectSchema>;
